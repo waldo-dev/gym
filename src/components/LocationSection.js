@@ -29,7 +29,7 @@ function LocationSection({ id }) {
       >
         <iframe
           title="Ubicación Gimnasio"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.712534523793!2d-70.5629617!3d-33.586812300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d7e2311eb943%3A0x45f4e2204baf2e77!2sGymathius%20Sport%20Center!5e0!3m2!1ses-419!2scl!4v1746642848331!5m2!1ses-419!2scl"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.712534523793!2d-70.5679617!3d-33.589812300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d7e2311eb943%3A0x45f4e2204baf2e77!2sFicticia%20Ubicacion%20Street!5e0!3m2!1ses-419!2scl!4v1746642848331!5m2!1ses-419!2scl"
           width="100%"
           height="450"
           style={{
