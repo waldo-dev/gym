@@ -48,67 +48,8 @@ function App() {
       <Navbar />
       <Box>
         <HeroSection id="inicio"/>
-        <Box
-          sx={{
-            textAlign: "center",
-            py: 4,
-            backgroundColor: theme.palette.background.default,
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              color: theme.palette.text.secondary, // texto en turquesa (#00eaba)
-              letterSpacing: 2,
-              fontWeight: "bold",
-            }}
-          >
-            ¿Por qué entrenar con
-          </Typography>
-          <Typography
-            variant="h3"
-            sx={{
-              color: theme.palette.text.secondary, // texto en turquesa (#00eaba)
-              letterSpacing: 2,
-              fontWeight: "bold",
-              fontSize: "3rem",
-            }}
-          >
-            nosotros?
-          </Typography>
-        </Box>
-
         <BenefitsSection id="servicios"/>
         <OfertBannerSection />
-        <Box
-          sx={{
-            textAlign: "center",
-            py: 4,
-            backgroundColor: theme.palette.background.default ,
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              color: theme.palette.text.primary, // texto en turquesa (#00eaba)
-              letterSpacing: 2,
-              fontWeight: "bold",
-            }}
-          >
-            Unete al mejor gimnasio
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{
-              color: theme.palette.secondary.main, // texto en turquesa (#00eaba)
-              letterSpacing: 2,
-              fontWeight: "bold",
-              fontSize: "3rem",
-            }}
-          >
-            de la zona
-          </Typography>
-        </Box>
         <PlansSection id="planes"/>
         <ContactForm id="contacto" />
         <LocationSection id="ubicacion"/>

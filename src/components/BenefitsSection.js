@@ -2,10 +2,10 @@ import {
   Container,
   Grid,
   Card,
-  CardContent,
   Typography,
   useTheme,
   Box,
+  useMediaQuery,
 } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
@@ -34,101 +34,135 @@ const beneficios = [
 
 function BenefitsSection({ id }) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container sx={{ py: 8 }} id={id}>
-      <Grid container spacing={4} justifyContent="center">
-        {beneficios.map((b, idx) => (
-          <Grid item xs={12} sm={6} md={4} key={idx}>
-            <Card
-              sx={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "24px", // esquinas redondeadas modernas
-                height: "420px",
-                transition: "transform 0.4s ease, box-shadow 0.4s ease",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                "&:hover": {
-                  transform: "translateY(-10px) scale(1.02)",
-                  boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
-                },
-              }}
-            >
-              {/* Fondo de video */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  zIndex: 1,
-                  "& video": {
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    filter: "brightness(0.4)", // oscurecemos para texto legible
-                    transition: "transform 0.6s ease",
-                  },
-                  "&:hover video": {
-                    transform: "scale(1.1)", // zoom suave al hover
-                  },
-                }}
-              >
-                <video autoPlay loop muted>
-                  <source src={b.video} type="video/mp4" />
-                  Tu navegador no soporta el video.
-                </video>
-              </Box>
+    <Box id={id} sx={{ py: { xs: 6, sm: 8 } }}>
+      {/* Títulos */}
+      <Box sx={{ textAlign: "center", mb: { xs: 5, sm: 8 } }}>
+        <Typography
+          variant="h5"
+          sx={{
+            color: theme.palette.accent.main,
+            letterSpacing: 1,
+            fontWeight: 700,
+            fontSize: { xs: "1.25rem", sm: "1.5rem" },
+            fontFamily: "Anton, sans-serif",
+          }}
+        >
+          ¿Por qué entrenar con
+        </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            color: theme.palette.text.primary,
+            fontWeight: 800,
+            fontSize: { xs: "2rem", sm: "2.75rem", md: "3rem" },
+            fontFamily: "Anton, sans-serif",
+            letterSpacing: 2,
+          }}
+        >
+          nosotros?
+        </Typography>
+      </Box>
 
-              {/* Overlay gradiente */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.8) 100%)",
-                  zIndex: 2,
-                }}
-              />
-
-              {/* Contenido */}
-              <Box
+      {/* Cards */}
+      <Container>
+        <Grid container spacing={4} justifyContent="center">
+          {beneficios.map((b, idx) => (
+            <Grid item xs={12} sm={6} md={4} key={idx}>
+              <Card
                 sx={{
                   position: "relative",
-                  zIndex: 3,
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: theme.palette.accent.main, // Turquesa del theme
-                  textAlign: "center",
-                  px: 2,
+                  overflow: "hidden",
+                  borderRadius: "24px",
+                  height: { xs: "360px", sm: "400px", md: "420px" },
+                  transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                  "&:hover": {
+                    transform: "translateY(-10px) scale(1.02)",
+                    boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
+                  },
                 }}
               >
-                <Box sx={{ mb: 2 }}>{b.icon}</Box>
-                <Typography
-                  variant="h6"
+                {/* Video de fondo */}
+                <Box
                   sx={{
-                    fontWeight: "bold",
-                    color: theme.palette.accent.main, // rojo del theme
-                    mb: 1,
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    "& video": {
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      filter: "brightness(0.4)",
+                      transition: "transform 0.6s ease",
+                    },
+                    "&:hover video": {
+                      transform: "scale(1.1)",
+                    },
                   }}
                 >
-                  {b.title}
-                </Typography>
-                <Typography
-                  variant="body2"
+                  <video autoPlay loop muted>
+                    <source src={b.video} type="video/mp4" />
+                    Tu navegador no soporta el video.
+                  </video>
+                </Box>
+
+                {/* Overlay */}
+                <Box
                   sx={{
-                    color: theme.palette.text.secondary,
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.8) 100%)",
+                    zIndex: 2,
+                  }}
+                />
+
+                {/* Contenido */}
+                <Box
+                  sx={{
+                    position: "relative",
+                    zIndex: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: theme.palette.accent.main,
+                    textAlign: "center",
+                    px: 2,
                   }}
                 >
-                  {b.desc}
-                </Typography>
-              </Box>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+                  <Box sx={{ mb: 2 }}>{b.icon}</Box>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: "bold",
+                      color: theme.palette.accent.main,
+                      mb: 1,
+                      fontSize: { xs: "1rem", sm: "1.125rem" },
+                    }}
+                  >
+                    {b.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
+                    }}
+                  >
+                    {b.desc}
+                  </Typography>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 
